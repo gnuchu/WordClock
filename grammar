@@ -1,0 +1,31 @@
+from numutils import n2w
+
+def grammar(minutes):
+  amount = ""
+  direction = ""
+
+  n = n2w(minutes)
+
+  if minutes  == 15:
+    amount = "quarter"
+    direction = "past"
+  elif minutes == 30:
+    amount = "half"
+    direction = "to"
+  elif minutes == 45:
+    amount = "quarter"
+    direction = "to"
+  elif (minutes % 5) == 0:
+    amount = n.words()
+    if minutes > 30:
+      direction = "to"
+    else:
+      direction = "past"
+  else:
+    amount = n.words()
+    if minutes > 30:
+      direction = "minutes to"
+    else:
+      direction = "minutes past"
+  
+  return f"{amount} {direction}"
